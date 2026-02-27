@@ -290,7 +290,8 @@ function placeOrder() {
 
   const name = document.getElementById("customerName").value;
   const phone = document.getElementById("phone").value;
-  const address = document.getElementById("address").value;
+  const addressInput = document.getElementById("address");
+  const address = addressInput ? addressInput.value : "";
   const orderType = document.getElementById("orderType").value;
   const payment = document.getElementById("paymentMethod").value;
 
@@ -374,5 +375,6 @@ window.toggleCart = toggleCart;
 
 
     
+
 
 
