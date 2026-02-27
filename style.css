@@ -140,11 +140,13 @@ button:hover {
 
 /* ================= CHECKOUT ================= */
 
-.checkout-section {
-  padding: 20px;
-  background: #fff4ef;
-  border-radius: 12px;
-  margin-top: 20px;
+.checkout-section select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  margin-bottom: 10px;
 }
 
 .checkout-section input {
@@ -240,3 +242,4 @@ button:hover {
   }
 
 }
+
