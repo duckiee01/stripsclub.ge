@@ -208,7 +208,7 @@ input {
 }
 
 .map-container {
-  width: 82%;
+  width: 78%;
   margin: 50px 0;   /* remove auto centering */
 }
 
@@ -277,5 +277,6 @@ input {
     font-size: 14px;
     margin-left: 5px;
   }
+
 
 }
