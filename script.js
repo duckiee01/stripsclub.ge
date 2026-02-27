@@ -189,6 +189,18 @@ window.addEventListener("DOMContentLoaded", () => {
   const addressInput = document.getElementById("address");
   const deliveryNote = document.getElementById("deliveryNote");
   const bankDetails = document.getElementById("bankDetails");
+  const floatingBtn = document.getElementById("floatingCartBtn");
+  const cartSidebar = document.getElementById("cartSidebar");
+
+  /* ================= MOBILE CART FIX ================= */
+
+  if (floatingBtn && cartSidebar) {
+    floatingBtn.addEventListener("click", () => {
+      cartSidebar.classList.toggle("active");
+    });
+  }
+
+  /* ================= BANK DETAILS ================= */
 
   function showBankDetails() {
     bankDetails.style.display = "block";
@@ -229,7 +241,6 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       paymentMethodSelect.value = "cash";
-
     }
 
     if (orderType === "delivery") {
@@ -252,7 +263,7 @@ window.addEventListener("DOMContentLoaded", () => {
       });
 
       paymentMethodSelect.value = "transfer";
-      showBankDetails();   // 🔥 THIS IS THE IMPORTANT PART
+      showBankDetails();
     }
   }
 
@@ -267,7 +278,6 @@ window.addEventListener("DOMContentLoaded", () => {
   orderTypeSelect.addEventListener("change", updatePaymentOptions);
 
   updatePaymentOptions();
-
 });
 
 /* ================= PLACE ORDER ================= */
@@ -361,6 +371,7 @@ window.removeItem = removeItem;
 window.decreaseQty = decreaseQty;
 window.increaseQty = increaseQty;
 window.toggleCart = toggleCart;
+
 
 
     
