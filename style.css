@@ -1,5 +1,9 @@
 /* ================= GLOBAL ================= */
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -13,13 +17,18 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px 0;
-  gap: 10px;
+  padding: 30px 20px;
+  gap: 12px;
 }
 
 .logo {
-  height: 200px;
+  height: 180px;
   object-fit: contain;
+}
+
+.lang-wrapper {
+  display: flex;
+  gap: 10px;
 }
 
 .lang-btn {
@@ -27,7 +36,7 @@ body {
   color: #ff3c00;
   border: 2px solid #ff3c00;
   font-weight: 700;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s ease;
@@ -36,13 +45,6 @@ body {
 .lang-btn:hover {
   background: #ff3c00;
   color: white;
-  transform: scale(1.05);
-}
-
-.lang-wrapper {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
 }
 
 /* ================= MENU GRID ================= */
@@ -52,8 +54,10 @@ body {
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
   padding: 30px;
-  margin-right: 340px; /* space for desktop cart */
+  margin-right: 320px; /* space for desktop cart */
 }
+
+/* ================= PRODUCT CARD ================= */
 
 .product-card {
   background: white;
@@ -69,9 +73,10 @@ body {
 
 .product-img {
   width: 100%;
-  height: 380px;
+  height: 340px;
   object-fit: cover;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /* ================= BUTTONS ================= */
@@ -91,14 +96,25 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* ================= CART DESKTOP ================= */
+/* ================= SELECT + INPUT ================= */
+
+select,
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* ================= CART (DESKTOP) ================= */
 
 .cart {
   position: fixed;
   right: 0;
   top: 0;
-  width: 300px;
-  height: 100%;
+  width: 320px;
+  height: 100vh;
   background: linear-gradient(to bottom, #fff5f0, #ffe6db);
   padding: 20px;
   overflow-y: auto;
@@ -126,75 +142,53 @@ button:hover {
   font-size: 12px;
   border-radius: 6px;
   background: #ff3c00;
-  color: white;
 }
 
 .cart-controls button:hover {
   background: #ff6a00;
 }
 
-.cart button {
-  width: 100%;
-  margin-top: 10px;
+#deliveryNote {
+  color: #ff3c00;
+  font-weight: 500;
+  margin-top: 5px;
 }
 
 /* ================= CHECKOUT ================= */
 
-.checkout-section select {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
-.checkout-section input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 10px;
-  border-radius: 8px;
-  border: none;
-  font-size: 14px;
+.checkout-section {
+  padding: 15px;
+  background: #fff4ef;
+  border-radius: 12px;
+  margin-top: 20px;
 }
 
 .order-btn {
   width: 100%;
   padding: 14px;
-  background: linear-gradient(45deg, #ff3c00, #ff6a00);
-  color: white;
   font-size: 16px;
-  border: none;
   border-radius: 10px;
-  cursor: pointer;
 }
 
 .order-btn:hover {
   background: #00a844;
 }
 
-#deliveryNote {
-  color: #ff3c00;
-  font-weight: 500;
-}
+/* ================= FLOATING CART BUTTON ================= */
 
-.coming-soon {
-  text-align: center;
-  color: #ff3c00;
-  font-size: 14px;
-  margin-top: 10px;
+#floatingCartBtn {
+  display: none;
 }
 
 /* ================= MOBILE ================= */
 
 @media (max-width: 900px) {
 
-  /* Remove desktop spacing */
   #menu-container {
+    grid-template-columns: repeat(2, 1fr);
     margin-right: 0;
     padding: 15px;
     gap: 15px;
-    grid-template-columns: repeat(2, 1fr);
   }
 
   .product-card {
@@ -202,13 +196,16 @@ button:hover {
   }
 
   .product-img {
-    height: 220px;
+    height: 200px;
   }
 
-  /* Slide-in cart */
+  /* Hide cart off screen */
   .cart {
+    position: fixed;
     right: -100%;
+    top: 0;
     width: 85%;
+    height: 100%;
     transition: right 0.3s ease;
     z-index: 1000;
   }
@@ -217,8 +214,9 @@ button:hover {
     right: 0;
   }
 
-  /* Floating Cart Button */
+  /* Show floating cart button */
   #floatingCartBtn {
+    display: block;
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -242,4 +240,3 @@ button:hover {
   }
 
 }
-
