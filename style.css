@@ -262,8 +262,9 @@ input {
     top: 0;
     width: 85%;
     height: 100%;
+    background: linear-gradient(to bottom, #fff5f0, #ffe6db);
     transition: right 0.3s ease;
-    z-index: 1000;
+    z-index: 2000;
   }
 
   .cart.active {
@@ -297,3 +298,4 @@ input {
 
 
 }
+
