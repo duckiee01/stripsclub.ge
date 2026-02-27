@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StripsClub.ge</title>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="script.js"></script>
+</head>
+<body>
+
+<div class="logo-container">
+  <img src="images/logo.jpeg" class="logo">
+</div>
+
+<div class="top-bar">
+
+    <!-- WOLT LEFT -->
+    <a 
+      href="https://wolt.com/ka/geo/tbilisi/restaurant/strips-club?utm_source=googlemapreserved&utm_campaign=strips-club&utm_content=686b83f2420856227d73f829&rwg_token=AFd1xnHvmZxcJUTtuIpYIlI2hIY-bTKeSA5vV5iIklhE9C9e8XQ-dhm02Wtb8fKNju7dkZZbK6E_fZ_Oq77TiYJ0FYL-uA_6RmQSOhkuV7RyUZSwn2cTbS4%3D"
+      class="top-order order-wolt"
+      target="_blank"
+      data-en="Order Wolt"
+      data-ka="Wolt შეკვეთა">
+      Order Wolt
+    </a>
+
+    <!-- LANGUAGE CENTER -->
+    <div class="lang-buttons">
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('ka')">KA</button>
+    </div>
+
+    <!-- BOLT RIGHT -->
+    <a 
+      href="https://food.bolt.eu/en/15/p/148754-strips-club"
+      class="top-order order-bolt"
+      target="_blank"
+      data-en="Order Bolt"
+      data-ka="Bolt შეკვეთა">
+      Order Bolt
+    </a>
+
+  </div>
+</div>
+
+<!-- ================= CART ================= -->
+
+<div id="cartSidebar" class="cart">
+ <div class="cart-header">
+   <h2 data-en="Cart" data-ka="კალათა">Cart</h2>
+   <span id="closeCartBtn">✕</span>
+</div>
+  <div id="cartItems"></div>
+  <h3>Total: ₾<span id="total">0</span></h3>
+  <p id="deliveryNote" style="font-size:14px; margin-top:5px;"></p>
+
+  <select id="orderType">
+    <option value="delivery"
+      data-en="Delivery"
+      data-ka="მიწოდება">
+      Delivery
+    </option>
+
+    <option value="pickup"
+      data-en="Pickup"
+      data-ka="წაღება">
+      Pickup
+    </option>
+  </select>
+
+  <select id="paymentMethod">
+    <option value="cash" data-type="pickup" data-en="Cash" data-ka="ნაღდი">Cash</option>
+    <option value="card" data-type="pickup" data-en="Card" data-ka="ბარათი">Card</option>
+    <option value="transfer" data-type="delivery" data-en="Bank Transfer" data-ka="ბანკის      გადარიცხვა">Bank Transfer</option>
+  </select>
+
+  <p id="bankDetails" style="display:none; font-size:14px; margin-top:10px; font-     weight:600; color:#ff3c00;">
+    Bank: TBC Bank <br>
+    Account Name: CHRISTO IRUDHIYA AAKASH CHARLES <br>
+    IBAN: GE28TB7851336010100043
+    Bank: BOG Bank <br>
+    Account Name: AAKASH FOOD <br>
+    IBAN: GE06BG0000000609200860
+  </p>
+
+  <div class="checkout-section">
+    <h2>Checkout</h2>
+
+    <input type="text" id="customerName" placeholder="Full Name">
+    <input 
+      type="tel" 
+      id="phone" 
+      placeholder="Enter phone with country code (e.g. +9955XXXXXXX)" 
+      required>
+    <input type="email" id="email" placeholder="Email">
+    <input type="text" id="address" placeholder="Delivery Address">
+
+    <button onclick="placeOrder()" class="order-btn"
+      data-en="Place Order"
+      data-ka="შეკვეთის განთავსება">
+      Place Order
+    </button>
+    
+   </div>
+</div>
+
+<!-- ================= PRODUCTS ================= -->
+
+<!-- STRIPS -->
+<div id="menu-container">
+<div class="product-card">
+  <img id="image-strips" src="images/spicystrips.jpg" class="product-img">
+  <h3 data-en="Chicken Strips" data-ka="ქათმის სტრიფსები">
+    Chicken Strips
+  </h3>
+
+  <select onchange="handleChange('strips','image-strips','price-strips','pieces-strips')">
+    <option value="spicy" data-en="Spicy" data-ka="ცხარე">Spicy</option>
+    <option value="hariyali" data-en="Hariyali" data-ka="ჰარიალი">Hariyali</option>
+  </select>
+
+  <select id="pieces-strips"
+    onchange="handleChange('strips','image-strips','price-strips','pieces-strips')">
+    <option value="3">3 PCS</option>
+    <option value="5">5 PCS</option>
+    <option value="8">8 PCS</option>
+  </select>
+
+  <p id="price-strips">₾6</p>
+  <button onclick="addDynamicItem('strips','image-strips','pieces-strips')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- ================= STRIPS COMBO (DROPDOWN) ================= -->
+
+<div class="product-card">
+  <img id="image-strips-combo" src="images/spicystripscombo.jpg" class="product-img">
+  <h3 data-en="Strips Combo Meals" data-ka="სტრიფსების კომბო მენიუ">
+    Strips Combo Meals
+  </h3>
+
+  <select onchange="addFixedItem(
+    this.value,
+    this.options[this.selectedIndex].getAttribute('data-en'),
+    this.options[this.selectedIndex].getAttribute('data-ka')
+  )">
+
+    <option disabled selected>Select Combo</option>
+
+    <option value="strips_5_spicy_combo"
+      data-en="5 PCS Spicy Strips + Fries + Sauce 12₾"
+      data-ka="5 ცალი ცხარე სტრიფსები + ფრი + სოუსი 12₾">
+      5 PCS Spicy Strips + Fries + Sauce 12₾
+    </option>
+
+    <option value="strips_8_spicy_combo"
+      data-en="8 PCS Spicy Strips + Fries + Sauce 16₾"
+      data-ka="8 ცალი ცხარე სტრიფსები + ფრი + სოუსი 16₾">
+      8 PCS Spicy Strips + Fries + Sauce 16₾
+    </option>
+
+    <option value="strips_5_hariyali_combo"
+      data-en="5 PCS Hariyali Strips + Fries + Sauce 12₾"
+      data-ka="5 ცალი ჰარიალი სტრიფსები + ფრი + სოუსი 12₾">
+      5 PCS Hariyali Strips + Fries + Sauce 12₾
+    </option>
+
+    <option value="strips_8_hariyali_combo"
+      data-en="8 PCS Hariyali Strips + Fries + Sauce 16₾"
+      data-ka="8 ცალი ჰარიალი სტრიფსები + ფრი + სოუსი 16₾">
+      8 PCS Hariyali Strips + Fries + Sauce 16₾
+    </option>
+
+  </select>
+ </div>
+
+<!-- WINGS -->
+<div class="product-card">
+  <img id="image-wings" src="images/spicywings.jpg" class="product-img">
+  <h3 data-en="Chicken Wings" data-ka="ქათმის ფრთები">
+    Chicken Wings
+  </h3>
+
+  <select onchange="handleChange('wings','image-wings','price-wings','pieces-wings')">
+    <option value="spicy" data-en="Spicy" data-ka="ცხარე">Spicy</option>
+    <option value="hariyali" data-en="Hariyali" data-ka="ჰარიალი">Hariyali</option>
+  </select>
+
+  <select id="pieces-wings"
+    onchange="handleChange('wings','image-wings','price-wings','pieces-wings')">
+    <option value="3">3 PCS</option>
+    <option value="5">5 PCS</option>
+    <option value="8">8 PCS</option>
+  </select>
+
+  <p id="price-wings">₾6</p>
+  <button onclick="addDynamicItem('wings','image-wings','pieces-wings')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- ================= WINGS COMBO (DROPDOWN) ================= -->
+
+<div class="product-card">
+  <img src="images/spicywingscombo.jpg" class="product-img">
+  <h3 data-en="Wings Combo Meals" data-ka="ფრთების კომბო მენიუ">
+    Wings Combo Meals
+  </h3>
+
+  <select onchange="addFixedItem(
+    this.value,
+    this.options[this.selectedIndex].getAttribute('data-en'),
+    this.options[this.selectedIndex].getAttribute('data-ka')
+  )">
+
+    <option disabled selected>Select Combo</option>
+
+    <option value="wings_5_spicy_combo"
+      data-en="5 PCS Spicy Wings + Fries + Sauce 12₾"
+      data-ka="5 ცალი ცხარე ფრთები + ფრი + სოუსი 12₾">
+      5 PCS Spicy Wings + Fries + Sauce 12₾
+    </option>
+
+    <option value="wings_8_spicy_combo"
+      data-en="8 PCS Spicy Wings + Fries + Sauce 16₾"
+      data-ka="8 ცალი ცხარე ფრთები + ფრი + სოუსი 16₾">
+      8 PCS Spicy Wings + Fries + Sauce 16₾
+    </option>
+
+    <option value="wings_5_hariyali_combo"
+      data-en="5 PCS Hariyali Wings + Fries + Sauce 12₾"
+      data-ka="5 ცალი ჰარიალი ფრთები + ფრი + სოუსი 12₾">
+      5 PCS Hariyali Wings + Fries + Sauce 12₾
+    </option>
+
+    <option value="wings_8_hariyali_combo"
+      data-en="8 PCS Hariyali Wings + Fries + Sauce 16₾"
+      data-ka="8 ცალი ჰარიალი ფრთები + ფრი + სოუსი 16₾">
+      8 PCS Hariyali Wings + Fries + Sauce 16₾
+    </option>
+
+  </select>
+</div>
+
+<!-- ================= STRIPS AND WINGS COMBO (DROPDOWN) ================= -->
+
+<div class="product-card">
+  <img src="images/stripsandwingscombo.jpg" class="product-img">
+  <h3 data-en="Strips Wings Combo" data-ka="სტრიპსის ფრთების კომბო">
+    Strips Wings Combo Meals 
+  </h3>
+
+  <select onchange="addFixedItem(
+    this.value,
+    this.options[this.selectedIndex].getAttribute('data-en'),
+    this.options[this.selectedIndex].getAttribute('data-ka')
+  )">
+
+    <option disabled selected>Select Combo</option>
+
+    <option value="mix_spicy_combo"
+      data-en="3 PCS Spicy Strips + 3 PCS Spicy Wings + Fries + Sauce 15₾"
+      data-ka="3 ცალი ცხარე ზოლი + 3 ცალი ცხარე ფრთა + კარტოფილი ფრი + სოუსი 15₾">
+      3 PCS Spicy Strips + 3 PCS Spicy Wings + Fries + Sauce 15₾
+    </option>
+
+    <option value="mix_hariyali_combo"
+      data-en="3 PCS Hariyali Strips + 3 PCS Hariyali Wings + Fries + Sauce 15₾"
+      data-ka="3 ცალი Hariyali Strips + 3 ცალი Hariyali Wings + კარტოფილი + სოუსი 15₾">
+      3 PCS Hariyali Strips + 3 PCS Hariyali Wings + Fries + Sauce 15₾
+    </option>
+
+  </select>
+</div>
+
+<!-- BURGER -->
+<div class="product-card">
+  <img id="image-burger" src="images/burger.jpg" class="product-img">
+  <h3 
+    data-en="Chicken Burger" 
+    data-ka="ქათმის ბურგერი">
+    Chicken Burger
+  </h3>
+
+
+  <select onchange="handleChange('burger','image-burger','price-burger')">
+    <option value="spicy">Spicy</option>
+    <option value="hariyali">Hariyali</option>
+  </select>
+
+  <p id="price-burger">₾7</p>
+  <button onclick="addDynamicItem('burger','image-burger')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- ================= BURGER COMBO (DROPDOWN) ================= -->
+
+<div class="product-card">
+  <img src="images/burgercombo.jpg" class="product-img">
+  <h3 data-en="Burger Combo Meals" data-ka="ბურგერის კომბო მენიუ">
+    Burger Combo Meals
+  </h3>
+
+  <select onchange="addFixedItem(
+    this.value,
+    this.options[this.selectedIndex].getAttribute('data-en'),
+    this.options[this.selectedIndex].getAttribute('data-ka')
+  )">
+
+    <option disabled selected>Select Combo</option>
+
+    <option value="burger_spicy_combo"
+      data-en="Club Spicy Chicken Burger + Fries + Sauce 12₾"
+      data-ka="კლუბის ცხარე ქათმის ბურგერი + ფრი + სოუსი 12₾">
+      Club Spicy Chicken Burger + Fries + Sauce 12₾
+    </option>
+
+    <option value="burger_hariyali_combo"
+      data-en="Club Hariyali Chicken Burger + Fries + Sauce 12₾"
+      data-ka="კლუბის ჰარიალი ქათმის ბურგერი + ფრი + სოუსი 12₾">
+      Club Hariyali Chicken Burger + Fries + Sauce 12₾
+    </option>
+    </select>
+</div>
+
+<!-- WRAP -->
+<div class="product-card">
+  <img id="image-wrap" src="images/wrap.jpg" class="product-img">
+  <h3 
+    data-en="Chicken Wrap" 
+    data-ka="ქათმის რეპი">
+    Chicken Wrap
+  </h3>
+
+  <select onchange="handleChange('wrap','image-wrap','price-wrap')">
+    <option value="spicy">Spicy</option>
+    <option value="hariyali">Hariyali</option>
+  </select>
+
+  <p id="price-wrap">₾7</p>
+  <button onclick="addDynamicItem('wrap','image-wrap')">
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img src="images/wrapcombo.jpg" class="product-img">
+  <h3 data-en="Wrap Combo Meals" data-ka="რეპის კომბო მენიუ">
+    Wrap Combo Meals
+  </h3>
+
+  <select onchange="addFixedItem(
+    this.value,
+    this.options[this.selectedIndex].getAttribute('data-en'),
+    this.options[this.selectedIndex].getAttribute('data-ka')
+  )">
+
+    <option disabled selected>Select Combo</option>
+
+    <option value="wrap_spicy_combo"
+      data-en="Club Spicy Chicken Wrap + Fries + Sauce 12₾"
+      data-ka="კლუბის ცხარე ქათმის რეპი + ფრი + სოუსი 12₾">
+      Club Spicy Chicken Wrap + Fries + Sauce 12₾
+    </option>
+
+    <option value="wrap_hariyali_combo"
+      data-en="Club Hariyali Chicken Wrap + Fries + Sauce 12₾"
+      data-ka="კლუბის ჰარიალი ქათმის რეპი + ფრი + სოუსი 12₾">
+      Club Hariyali Chicken Wrap + Fries + Sauce 12₾
+    </option>
+    </select>
+</div>
+
+<!-- SAUCES -->
+<div class="product-card">
+  <img id="image-mintmayo" src="images/mintmayo.jpg" class="product-img">
+  <h3 
+    data-en="Mint Mayo" 
+    data-ka="პიტნის მაიონეზი">
+    Mint Mayo
+  </h3>
+
+  <p>₾2</p>
+  <button onclick="addDynamicItem('mintmayo','image-mintmayo')">
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img id="image-garlicmayo" src="images/garlicmayo.jpg" class="product-img">
+  <h3 
+    data-en="Garlic Mayo" 
+    data-ka="ნიორის მაიონეზი">
+    Garlic Mayo
+  </h3>
+
+  <p>₾2</p>
+  <button onclick="addDynamicItem('garlicmayo','image-garlicmayo')">
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img id="image-clubspecialsauce" src="images/clubspecialsauce.jpg" class="product-img">
+  <h3 
+    data-en="Club Special Sauce" 
+    data-ka="კლუბის სპეციალური სოუსი">
+    Club Special Sauce
+  </h3>
+
+  <p>₾2</p>
+  <button onclick="addDynamicItem('clubspecialsauce','image-clubspecialsauce')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- SNACKS -->
+<div class="product-card">
+  <img id="image-falafel" src="images/falafel.png" class="product-img">
+  <h3 
+    data-en="Falafel" 
+    data-ka="ფალაფელი">
+    Falafel
+  </h3>
+
+  <p>₾7</p>
+  <button onclick="addDynamicItem('falafel','image-falafel')">
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img id="image-onionrings" src="images/onionrings.jpg" class="product-img">
+  <h3 
+    data-en="Onion Rings" 
+    data-ka="ხახვის რგოლები">
+    Onion Rings
+  </h3>
+
+  <p>₾7</p>
+  <button onclick="addDynamicItem('onionrings','image-onionrings')">
+    Add to Cart
+  </button>
+</div>
+
+<!-- DRINKS -->
+<div class="product-card">
+  <img id="image-water" src="images/water.jpg" class="product-img">
+  <h3 
+    data-en="Water" 
+    data-ka="წყალი">
+    Water
+  </h3>
+
+  <p>₾1</p>
+  <button onclick="addDynamicItem('water','image-water')">
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img id="image-sprite" src="images/sprite.jpg" class="product-img">
+  <h3 
+    data-en="Sprite" 
+    data-ka="სპრაიტი">
+    Sprite
+  </h3>
+
+  <p>₾2</p>
+  <button onclick="addDynamicItem('sprite','image-sprite')">
+    Add to Cart
+  </button>
+</div>
+
+<div class="product-card">
+  <img id="image-cocacola" src="images/cocacola.jpg" class="product-img">
+  <h3 
+    data-en="Coca Cola" 
+    data-ka="კოკა კოლა">
+    Coca Cola
+  </h3>
+
+  <p>₾2</p>
+  <button onclick="addDynamicItem('cocacola','image-cocacola')">
+    Add to Cart
+  </button>
+ </div>
+</div>
+
+<div id="floatingCartBtn">
+  🛒 <span id="cartCount">0</span>
+</div>
+
+<div style="margin:40px 0; padding:20px; background:white;">
+  <h2 style="text-align:center;">Find Us</h2>
+
+  <div class="map-container">
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.5874843367187!2d44.74676067649651!3d41.72941957470933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4044737eea799ae5%3A0xed6194552fc79a24!2sStrips%20club!5e0!3m2!1sen!2sge!4v1772203398409!5m2!1sen!2sge" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen=""
+    loading="lazy">
+    </iframe>
+  </div>
+</div>
+</body>
+</html>
+
