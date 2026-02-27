@@ -231,9 +231,25 @@ input, select {
   transform: scale(1.05);
 }
 
-/* Mobile Cart Hidden By Default */
+/* ================= MOBILE ================= */
 @media (max-width: 900px) {
 
+  #menu-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-right: 0;
+    padding: 15px;
+  }
+
+  .product-card {
+    padding: 15px;
+  }
+
+  .product-img {
+    height: 220px;
+  }
+
+  /* Hide cart off screen */
   .cart {
     position: fixed;
     right: -100%;
@@ -248,6 +264,7 @@ input, select {
     right: 0;
   }
 
+  /* Floating cart button */
   #floatingCartBtn {
     position: fixed;
     bottom: 20px;
@@ -270,4 +287,10 @@ input, select {
     font-size: 14px;
     margin-left: 5px;
   }
+
+  .logo-container {
+    margin-right: 0;
+    padding-left: 20px;
+  }
+
 }
