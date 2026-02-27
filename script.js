@@ -254,11 +254,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (orderType === "delivery") {
 
-      addressInput.placeholder =
-        currentLang === "en"
-          ? "Enter full delivery address"
-          : "შეიყვანეთ სრული მისამართი";
-
       deliveryNote.innerText =
         currentLang === "en"
           ? "Delivery fee not included"
@@ -384,3 +379,4 @@ window.toggleCart = toggleCart;
 
 
     
+
