@@ -50,8 +50,15 @@ button:hover {
 
 .logo-container {
   padding: 20px 0;
-  margin-right: 340px; /* same space as cart */
-  text-align: center;
+  text-align: left;
+  padding-left: 40px;
+}
+
+/* Desktop only */
+@media (min-width: 901px) {
+  .logo-container {
+    margin-right: 340px; /* leaves space for cart */
+  }
 }
 
 .logo {
@@ -142,8 +149,6 @@ input, select {
 
 @media (max-width: 900px) {
 
-  @media (max-width: 900px) {
-
   #menu-container {
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
@@ -160,13 +165,16 @@ input, select {
   }
 
 }
-
   .cart {
     position: relative;
     width: 100%;
     height: auto;
     border-left: none;
     border-top: 4px solid #ff3c00;
+  }
+   .logo-container {
+    margin-right: 0;
+    padding-left: 20px;
   }
 
 }
@@ -263,6 +271,3 @@ input, select {
     margin-left: 5px;
   }
 }
-
-
-
