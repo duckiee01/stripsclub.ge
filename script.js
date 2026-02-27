@@ -303,8 +303,7 @@ function placeOrder() {
 function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
  
   const phoneNumber = "995501002006";
-  const courier = document.getElementById("courierType").value;
-
+  
   let message =
     currentLang === "en"
       ? "Hello, I want to order:\n\n"
@@ -327,10 +326,7 @@ function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
   if (orderType === "delivery") {
     message += `🏠 Address: ${address}\n`;
   }
-  if (orderType === "delivery") {
-  message += `🚚 Courier: ${courier}\n`;
-}
-
+  
   message += `💳 Payment: ${payment}\n`;
 
   const encodedMessage = encodeURIComponent(message);
@@ -375,6 +371,7 @@ window.toggleCart = toggleCart;
 
 
     
+
 
 
 
