@@ -207,3 +207,44 @@ input, select {
   color: white;
   transform: scale(1.05);
 }
+
+/* Mobile Cart Hidden By Default */
+@media (max-width: 900px) {
+
+  .cart {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    width: 85%;
+    height: 100%;
+    transition: right 0.3s ease;
+    z-index: 1000;
+  }
+
+  .cart.active {
+    right: 0;
+  }
+
+  #floatingCartBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(45deg, #ff3c00, #ff6a00);
+    color: white;
+    padding: 15px 18px;
+    border-radius: 50px;
+    font-size: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 1100;
+  }
+
+  #cartCount {
+    background: white;
+    color: #ff3c00;
+    border-radius: 50%;
+    padding: 2px 8px;
+    font-size: 14px;
+    margin-left: 5px;
+  }
+}
