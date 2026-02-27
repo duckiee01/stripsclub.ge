@@ -12,8 +12,8 @@
 <div class="logo-container">
   <img src="images/logo.jpeg" class="logo">
   <div class="lang-wrapper">
-    <button class="lang-btn">EN</button>
-    <button class="lang-btn">KA</button>
+    <button class="lang-btn" onclick="setLanguage('en')">EN</button>
+    <button class="lang-btn" onclick="setLanguage('ka')">GE</button>
   </div>
 </div>
 
@@ -448,6 +448,55 @@
 <div id="floatingCartBtn" onclick="toggleCart()">
   🛒 <span id="cartCount">0</span>
 </div>
+
+<script>
+const translations = {
+  en: {
+    addToCart: "Add to Cart",
+    pickup: "Pickup",
+    delivery: "Delivery",
+    paymentCash: "Cash",
+    paymentCard: "Card",
+    deliveryNote: "Delivery available from 12:00 - 22:00",
+    orderNow: "Place Order"
+  },
+  ka: {
+    addToCart: "კალათაში დამატება",
+    pickup: "წაღება",
+    delivery: "მიტანა",
+    paymentCash: "ნაღდი",
+    paymentCard: "ბარათი",
+    deliveryNote: "მიტანა ხელმისაწვდომია 12:00 - 22:00",
+    orderNow: "შეკვეთის გაკეთება"
+  }
+};
+
+function setLanguage(lang) {
+
+  // Buttons like "Add to Cart"
+  document.querySelectorAll("[data-translate]").forEach(el => {
+    const key = el.getAttribute("data-translate");
+    if (translations[lang][key]) {
+      el.innerText = translations[lang][key];
+    }
+  });
+
+  // Delivery note
+  const note = document.getElementById("deliveryNote");
+  if (note) {
+    note.innerText = translations[lang].deliveryNote;
+  }
+
+  // Save preference
+  localStorage.setItem("language", lang);
+}
+
+// Load saved language on refresh
+window.onload = function() {
+  const savedLang = localStorage.getItem("language") || "en";
+  setLanguage(savedLang);
+};
+</script>
 
 </body>
 </html>
