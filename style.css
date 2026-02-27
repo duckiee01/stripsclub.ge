@@ -49,8 +49,9 @@ button:hover {
 }
 
 .logo-container {
-  text-align: center;
   padding: 20px 0;
+  margin-right: 340px; /* same space as cart */
+  text-align: center;
 }
 
 .logo {
@@ -262,4 +263,5 @@ input, select {
     margin-left: 5px;
   }
 }
+
 
