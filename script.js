@@ -234,11 +234,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (orderType === "pickup") {
 
-      addressInput.placeholder =
-        currentLang === "en"
-          ? "Type 'Pickup' or branch name"
-          : "ჩაწერეთ 'Pickup' ან ფილიალი";
-
       deliveryNote.innerText = "";
       hideBankDetails();
 
@@ -379,4 +374,5 @@ window.toggleCart = toggleCart;
 
 
     
+
 
