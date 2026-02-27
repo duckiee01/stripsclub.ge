@@ -138,6 +138,15 @@ function increaseQty(name_en) {
 function renderCart() {
 
   const cartDiv = document.getElementById("cartItems");
+  const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+  const cartCountEl = document.getElementById("cartCount");
+
+  if (totalItems > 0) {
+    cartCountEl.style.display = "inline-block";
+    cartCountEl.innerText = totalItems;
+  } else {
+    cartCountEl.style.display = "none";
+  }
   cartDiv.innerHTML = "";
 
   let total = 0;
@@ -300,6 +309,10 @@ function setLang(lang) {
   renderCart();
 }
 
+function toggleCart() {
+  document.getElementById("cartSidebar").classList.toggle("active");
+}
+
 /* ================= EXPORT TO WINDOW ================= */
 
 window.handleChange = handleChange;
@@ -310,3 +323,4 @@ window.setLang = setLang;
 window.removeItem = removeItem;
 window.decreaseQty = decreaseQty;
 window.increaseQty = increaseQty;
+window.toggleCart = toggleCart;
