@@ -141,10 +141,24 @@ input, select {
 
 @media (max-width: 900px) {
 
+  @media (max-width: 900px) {
+
   #menu-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
     margin-right: 0;
+    padding: 15px;
   }
+
+  .product-card {
+    padding: 15px;
+  }
+
+  .product-img {
+    height: 220px;
+  }
+
+}
 
   .cart {
     position: relative;
@@ -248,3 +262,4 @@ input, select {
     margin-left: 5px;
   }
 }
+
