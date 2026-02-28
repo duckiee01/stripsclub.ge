@@ -216,12 +216,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
     bankDetails.innerHTML = currentLang === "en"
       ? `<strong>Bank Details:</strong><br>
+         Name: CHRISTO IRUDHIYA AAKASH CHARLES <br>
          BOG: GE06BG0000000609200860<br>
+         Name: AAKASH FOOD <br>
          TBC: GE28TB7851336010100043`
       : `<strong>საბანკო დეტალები:</strong><br>
-         BOG: GE06BG0000000609200860<br>
+         Name: CHRISTO IRUDHIYA AAKASH CHARLES <br>
+         BOG: GE06BG0000000609200860
+         Name: AAKASH FOOD <br>   
          TBC: GE28TB7851336010100043`;
   }
+
 
   function hideBankDetails() {
     bankDetails.style.display = "none";
@@ -371,6 +376,7 @@ window.toggleCart = toggleCart;
 
 
     
+
 
 
 
