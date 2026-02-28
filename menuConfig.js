@@ -1,6 +1,6 @@
 export const menuConfig = {
 
-  /* ================= INDIVIDUAL ITEMS ================= */
+  
 
   strips: {
     images: {
@@ -42,7 +42,7 @@ export const menuConfig = {
     price: 7
   },
 
-  /* ================= STRIPS COMBO MEALS ================= */
+ 
 
   strips_5_spicy_combo: {
     price: 12,
@@ -64,7 +64,7 @@ export const menuConfig = {
     image: "hariyalistripscombo.jpg"
   },
 
-  /* ================= WINGS COMBO MEALS ================= */
+  
 
   wings_5_spicy_combo: {
     price: 12,
@@ -86,7 +86,7 @@ export const menuConfig = {
     image: "hariyaliwingscombo.jpg"
   },
 
-  /* ================= MIX COMBO ================= */
+  
 
   mix_spicy_combo: {
     price: 15,
@@ -98,7 +98,7 @@ export const menuConfig = {
     image: "stripsandwingscombo.jpg"
   },
 
-  /* ================= BURGER COMBO ================= */
+  
 
   burger_spicy_combo: {
     price: 12,
@@ -110,7 +110,7 @@ export const menuConfig = {
     image: "burgercombo.jpg"
   },
 
-  /* ================= WRAP COMBO ================= */
+  
 
   wrap_spicy_combo: {
     price: 12,
@@ -122,7 +122,7 @@ export const menuConfig = {
     image: "wrapcombo.jpg"
   },
 
-  /* ================= SAUCES ================= */
+  
 
   mintmayo: {
     price: 2,
@@ -139,7 +139,7 @@ export const menuConfig = {
     image: "clubspecialsauce.jpg"
   },
 
-  /* ================= SNACKS ================= */
+  
 
   falafel: {
     price: 7,
@@ -151,7 +151,7 @@ export const menuConfig = {
     image: "onionrings.jpg"
   },
 
-  /* ================= DRINKS ================= */
+  
 
   water: {
     price: 1,
@@ -169,3 +169,4 @@ export const menuConfig = {
   }
 
 };
+
