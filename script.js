@@ -3,7 +3,7 @@ import { menuConfig } from "./menuConfig.js";
 let cart = [];
 let currentLang = "en";
 
-/* ================= DYNAMIC IMAGE & PRICE ================= */
+
 
 function handleChange(productKey, imageId, priceId, piecesId = null) {
 
@@ -34,7 +34,7 @@ function handleChange(productKey, imageId, priceId, piecesId = null) {
   }
 }
 
-/* ================= ADD DYNAMIC ITEM ================= */
+
 
 function addDynamicItem(productKey, imageId, piecesId = null) {
 
@@ -84,7 +84,7 @@ function addDynamicItem(productKey, imageId, piecesId = null) {
   renderCart();
 }
 
-/* ================= ADD FIXED ITEM ================= */
+
 
 function addFixedItem(productKey, name_en, name_ka) {
 
@@ -133,7 +133,7 @@ function increaseQty(name_en) {
   renderCart();
 }
 
-/* ================= RENDER CART ================= */
+
 
 function renderCart() {
 
@@ -180,7 +180,7 @@ function calculateTotal() {
   return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 }
 
-/* ================= ORDER TYPE PLACEHOLDER ================= */
+
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -193,7 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const cartSidebar = document.getElementById("cartSidebar");
   const closeCartBtn = document.getElementById("closeCartBtn"); // ✅ ADDED
 
-  /* ================= MOBILE CART FIX ================= */
+  
 
   if (floatingBtn && cartSidebar) {
     floatingBtn.addEventListener("click", () => {
@@ -201,7 +201,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= CLOSE CART FIX ================= */
+  
 
   if (closeCartBtn && cartSidebar) {
     closeCartBtn.addEventListener("click", () => {
@@ -209,7 +209,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* ================= BANK DETAILS ================= */
+  
 
   function showBankDetails() {
     bankDetails.style.display = "block";
@@ -279,7 +279,7 @@ window.addEventListener("DOMContentLoaded", () => {
   updatePaymentOptions();
 });
 
-/* ================= PLACE ORDER ================= */
+
 
 function placeOrder() {
 
@@ -298,7 +298,7 @@ function placeOrder() {
   sendOrderToWhatsApp(name, phone, address, orderType, payment);
 }
 
-/* ================= WHATSAPP ================= */
+
 
 function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
  
@@ -336,7 +336,7 @@ function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
   window.open(whatsappURL, "_blank");
 }
 
-/* ================= LANGUAGE SWITCH ================= */ 
+
 
 function setLang(lang) {
 
@@ -356,7 +356,7 @@ function setLang(lang) {
   renderCart();
 }
 
-/* ================= EXPORT TO WINDOW ================= */
+
 
 window.handleChange = handleChange;
 window.addDynamicItem = addDynamicItem;
@@ -371,6 +371,7 @@ window.toggleCart = toggleCart;
 
 
     
+
 
 
 
