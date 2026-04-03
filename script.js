@@ -3,7 +3,7 @@ import { menuConfig } from "./menuConfig.js";
 let cart = [];
 let currentLang = "en";
 
-
+/* ================= DYNAMIC IMAGE & PRICE ================= */
 
 function handleChange(productKey, imageId, priceId, piecesId = null) {
 
@@ -34,7 +34,7 @@ function handleChange(productKey, imageId, priceId, piecesId = null) {
   }
 }
 
-
+/* ================= ADD DYNAMIC ITEM ================= */
 
 function addDynamicItem(productKey, imageId, piecesId = null) {
 
@@ -84,7 +84,7 @@ function addDynamicItem(productKey, imageId, piecesId = null) {
   renderCart();
 }
 
-
+/* ================= ADD FIXED ITEM ================= */
 
 function addFixedItem(productKey, name_en, name_ka) {
 
@@ -133,7 +133,7 @@ function increaseQty(name_en) {
   renderCart();
 }
 
-
+/* ================= RENDER CART ================= */
 
 function renderCart() {
 
@@ -180,7 +180,7 @@ function calculateTotal() {
   return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 }
 
-
+/* ================= ORDER TYPE PLACEHOLDER ================= */
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -193,7 +193,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const cartSidebar = document.getElementById("cartSidebar");
   const closeCartBtn = document.getElementById("closeCartBtn"); // ✅ ADDED
 
-  
+  /* ================= MOBILE CART FIX ================= */
 
   if (floatingBtn && cartSidebar) {
     floatingBtn.addEventListener("click", () => {
@@ -201,7 +201,7 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+  /* ================= CLOSE CART FIX ================= */
 
   if (closeCartBtn && cartSidebar) {
     closeCartBtn.addEventListener("click", () => {
@@ -209,24 +209,11 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  
+  /* ================= BANK DETAILS ================= */
 
-  function showBankDetails() {
-    bankDetails.style.display = "block";
-
-    bankDetails.innerHTML = currentLang === "en"
-      ? `<strong>Bank Details:</strong><br>
-         Name: CHRISTO IRUDHIYA AAKASH CHARLES <br>
-         BOG: GE06BG0000000609200860<br>
-         Name: AAKASH FOOD <br>
-         TBC: GE28TB7851336010100043`
-      : `<strong>საბანკო დეტალები:</strong><br>
-         Name: CHRISTO IRUDHIYA AAKASH CHARLES <br>
-         BOG: GE06BG0000000609200860
-         Name: AAKASH FOOD <br>   
-         TBC: GE28TB7851336010100043`;
-  }
-
+function showBankDetails() {
+  bankDetails.style.display = "block";
+}
 
   function hideBankDetails() {
     bankDetails.style.display = "none";
@@ -284,7 +271,7 @@ window.addEventListener("DOMContentLoaded", () => {
   updatePaymentOptions();
 });
 
-
+/* ================= PLACE ORDER ================= */
 
 function placeOrder() {
 
@@ -303,7 +290,7 @@ function placeOrder() {
   sendOrderToWhatsApp(name, phone, address, orderType, payment);
 }
 
-
+/* ================= WHATSAPP ================= */
 
 function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
  
@@ -332,7 +319,40 @@ function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
     message += `🏠 Address: ${address}\n`;
   }
   
-  message += `💳 Payment: ${payment}\n`;
+  message += `💳 Payment: ${payment}\n\n`;
+
+// ✅ ADD BANK DETAILS IF TRANSFER
+if (payment === "transfer") {
+
+  if (currentLang === "en") {
+
+    message += "💳 PAYMENT REQUIRED BEFORE PREPARATION\n\n";
+
+    message += "TBC Bank:\n";
+    message += "IBAN: GE62TB7851345161200002\n";
+    message += "Account Holder: CHRISTO IRUDHIYA AAKASH CHARLES\n\n";
+
+    message += "BOG Bank:\n";
+    message += "IBAN: GE75BG0000000533654466\n";
+    message += "Account Holder: CHRISTO IRUDHIYA AAKASH CHARLES\n\n";
+
+    message += "Please send payment screenshot after transfer.\n";
+
+  } else {
+
+    message += "💳 გადახდა საჭიროა შეკვეთის დამზადებამდე\n\n";
+
+    message += "TBC ბანკი:\n";
+    message += "IBAN: GE62TB7851345161200002\n";
+    message += "მფლობელი: CHRISTO IRUDHIYA AAKASH CHARLES\n\n";
+
+    message += "BOG ბანკი:\n";
+    message += "IBAN: GE75BG0000000533654466\n";
+    message += "მფლობელი: CHRISTO IRUDHIYA AAKASH CHARLES\n\n";
+
+    message += "გთხოვთ გადახდის დადასტურება გამოგვიგზავნოთ.\n";
+  }
+}
 
   const encodedMessage = encodeURIComponent(message);
   const whatsappURL =
@@ -341,7 +361,7 @@ function sendOrderToWhatsApp(name, phone, address, orderType, payment) {
   window.open(whatsappURL, "_blank");
 }
 
-
+/* ================= LANGUAGE SWITCH ================= */ 
 
 function setLang(lang) {
 
@@ -361,7 +381,7 @@ function setLang(lang) {
   renderCart();
 }
 
-
+/* ================= EXPORT TO WINDOW ================= */
 
 window.handleChange = handleChange;
 window.addDynamicItem = addDynamicItem;
@@ -371,13 +391,11 @@ window.setLang = setLang;
 window.removeItem = removeItem;
 window.decreaseQty = decreaseQty;
 window.increaseQty = increaseQty;
-window.toggleCart = toggleCart;
+
 
 
 
     
-
-
 
 
 
