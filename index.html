@@ -15,7 +15,7 @@
 
 <div class="top-bar">
 
-    
+    <!-- WOLT LEFT -->
     <a 
       href="https://wolt.com/ka/geo/tbilisi/restaurant/strips-club?utm_source=googlemapreserved&utm_campaign=strips-club&utm_content=686b83f2420856227d73f829&rwg_token=AFd1xnHvmZxcJUTtuIpYIlI2hIY-bTKeSA5vV5iIklhE9C9e8XQ-dhm02Wtb8fKNju7dkZZbK6E_fZ_Oq77TiYJ0FYL-uA_6RmQSOhkuV7RyUZSwn2cTbS4%3D"
       class="top-order order-wolt"
@@ -25,13 +25,13 @@
       Order Wolt
     </a>
 
-    
+    <!-- LANGUAGE CENTER -->
     <div class="lang-buttons">
       <button class="lang-btn" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('ka')">KA</button>
     </div>
 
-    
+    <!-- BOLT RIGHT -->
     <a 
       href="https://food.bolt.eu/en/15/p/148754-strips-club"
       class="top-order order-bolt"
@@ -44,7 +44,7 @@
   </div>
 </div>
 
-
+<!-- ================= CART ================= -->
 
 <div id="cartSidebar" class="cart">
  <div class="cart-header">
@@ -75,14 +75,31 @@
     <option value="transfer" data-type="delivery" data-en="Bank Transfer" data-ka="ბანკის      გადარიცხვა">Bank Transfer</option>
   </select>
 
-  <p id="bankDetails" style="display:none; font-size:14px; margin-top:10px; font-     weight:600; color:#ff3c00;">
-    Bank: TBC Bank <br>
-    Account Name: CHRISTO IRUDHIYA AAKASH CHARLES <br>
-    IBAN: GE28TB7851336010100043
-    Bank: BOG Bank <br>
-    Account Name: AAKASH FOOD <br>
-    IBAN: GE06BG0000000609200860
-  </p>
+  <div style="background:#fff3f0; padding:10px; border-radius:10px;">
+    <p id="bankDetails" style="display:none; font-size:14px; margin-top:10px; font-weight:600; color:#ff3c00; line-height:1.6;">
+
+      Dear Customer,<br><br>
+ 
+      To proceed with your order, we kindly request payment in advance. 
+      We will start preparing your food only after the payment is confirmed.<br><br>
+
+      Please find the payment details below:<br><br>
+
+      ✅ <strong>TBC Account:</strong><br>
+      IBAN: GE62TB7851345161200002<br>
+      Account Holder: CHRISTO IRUDHIYA AAKASH CHARLES<br><br>
+
+      ✅ <strong>BOG Account:</strong><br>
+      IBAN: GE75BG0000000533654466<br>
+      Account Holder: CHRISTO IRUDHIYA AAKASH CHARLES<br><br>
+
+      Once the payment is completed, kindly send us a screenshot or confirmation for faster processing.<br><br>
+ 
+      Thank you for your cooperation and support!<br><br>
+
+      Team STRIPS CLUB
+     </p>
+   </div>
 
   <div class="checkout-section">
     <h2>Checkout</h2>
@@ -104,9 +121,9 @@
    </div>
 </div>
 
+<!-- ================= PRODUCTS ================= -->
 
-
-
+<!-- STRIPS -->
 <div id="menu-container">
 <div class="product-card">
   <img id="image-strips" src="images/spicystrips.jpg" class="product-img">
@@ -132,7 +149,7 @@
   </button>
 </div>
 
-
+<!-- ================= STRIPS COMBO (DROPDOWN) ================= -->
 
 <div class="product-card">
   <img id="image-strips-combo" src="images/spicystripscombo.jpg" class="product-img">
@@ -175,7 +192,7 @@
   </select>
  </div>
 
-
+<!-- WINGS -->
 <div class="product-card">
   <img id="image-wings" src="images/spicywings.jpg" class="product-img">
   <h3 data-en="Chicken Wings" data-ka="ქათმის ფრთები">
@@ -200,7 +217,7 @@
   </button>
 </div>
 
-
+<!-- ================= WINGS COMBO (DROPDOWN) ================= -->
 
 <div class="product-card">
   <img src="images/spicywingscombo.jpg" class="product-img">
@@ -243,7 +260,7 @@
   </select>
 </div>
 
-
+<!-- ================= STRIPS AND WINGS COMBO (DROPDOWN) ================= -->
 
 <div class="product-card">
   <img src="images/stripsandwingscombo.jpg" class="product-img">
@@ -274,7 +291,7 @@
   </select>
 </div>
 
-
+<!-- BURGER -->
 <div class="product-card">
   <img id="image-burger" src="images/burger.jpg" class="product-img">
   <h3 
@@ -295,7 +312,7 @@
   </button>
 </div>
 
-
+<!-- ================= BURGER COMBO (DROPDOWN) ================= -->
 
 <div class="product-card">
   <img src="images/burgercombo.jpg" class="product-img">
@@ -325,7 +342,7 @@
     </select>
 </div>
 
-
+<!-- WRAP -->
 <div class="product-card">
   <img id="image-wrap" src="images/wrap.jpg" class="product-img">
   <h3 
@@ -373,7 +390,7 @@
     </select>
 </div>
 
-
+<!-- SAUCES -->
 <div class="product-card">
   <img id="image-mintmayo" src="images/mintmayo.jpg" class="product-img">
   <h3 
@@ -416,7 +433,7 @@
   </button>
 </div>
 
-
+<!-- SNACKS -->
 <div class="product-card">
   <img id="image-falafel" src="images/falafel.png" class="product-img">
   <h3 
@@ -445,7 +462,7 @@
   </button>
 </div>
 
-
+<!-- DRINKS -->
 <div class="product-card">
   <img id="image-water" src="images/water.jpg" class="product-img">
   <h3 
@@ -506,6 +523,5 @@
 </div>
 </body>
 </html>
-
 
 
